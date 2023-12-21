@@ -1,0 +1,37 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f52e362f0f078c543b17ae96f3e1a785, type: 3}
+  m_Name: Biberbande Klassik
+  m_EditorClassIdentifier: 
+  cardVisualisationsInput:
+  - cardType: 0
+    visualisation: {fileID: 1157562439, guid: 3138de0ccdaa3ef47abf8926677524db, type: 3}
+  - cardType: 1
+    visualisation: {fileID: -44797854, guid: 3138de0ccdaa3ef47abf8926677524db, type: 3}
+  - cardType: 2
+    visualisation: {fileID: -1399789947, guid: 3138de0ccdaa3ef47abf8926677524db, type: 3}
+  - cardType: 3
+    visualisation: {fileID: 1906303836, guid: 3138de0ccdaa3ef47abf8926677524db, type: 3}
+  - cardType: 4
+    visualisation: {fileID: -1264016042, guid: 3138de0ccdaa3ef47abf8926677524db, type: 3}
+  - cardType: 5
+    visualisation: {fileID: -2049416902, guid: 3138de0ccdaa3ef47abf8926677524db, type: 3}
+  - cardType: 6
+    visualisation: {fileID: 1654188541, guid: 3138de0ccdaa3ef47abf8926677524db, type: 3}
+  - cardType: 7
+    visualisation: {fileID: 615757283, guid: 3138de0ccdaa3ef47abf8926677524db, type: 3}
+  - cardType: 8
+    visualisation: {fileID: 1437909271, guid: 3138de0ccdaa3ef47abf8926677524db, type: 3}
+  - cardType: 10
+    visualisation: {fileID: -1953352220, guid: 0aeb0ce0c92b5834391a0b9631dd68d1, type: 3}
+  - cardType: 9
+    visualisation: {fileID: 1212185710, guid: 3138de0ccdaa3ef47abf8926677524db, type: 3}

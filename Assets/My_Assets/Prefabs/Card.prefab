@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 84696778104825310}
   - component: {fileID: 6709549705683808894}
   - component: {fileID: 3291891660293083572}
+  - component: {fileID: 988224651277799365}
   m_Layer: 5
   m_Name: Card
   m_TagString: Untagged
@@ -66,7 +67,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: ce826f64477c077439eb3a32c64243c0, type: 3}
+  m_Sprite: {fileID: -1953352220, guid: 0aeb0ce0c92b5834391a0b9631dd68d1, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -119,4 +120,29 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 6709549705683808894}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 0}
+        m_TargetAssemblyTypeName: CardPanel, Assembly-CSharp
+        m_MethodName: OnCardIsFlipped
+        m_Mode: 3
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+--- !u!114 &988224651277799365
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6282863168270753925}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2e9760f3ca7a5384f954c8a55900e607, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  cardAppearance: {fileID: 11400000, guid: 11f936a0a8cb17847a18a1c2802b037b, type: 2}
