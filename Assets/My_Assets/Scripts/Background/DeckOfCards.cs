@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-public class Cards
+public class DeckOfCards
 {
     //variables
     private CardPiles cardPiles;
@@ -12,7 +12,7 @@ public class Cards
     private int playerIndex = 0;
 
     //constructor
-    public Cards(string[] playerNames)
+    public DeckOfCards(string[] playerNames)
     {
         TroubleshootPlayerNames(playerNames);
         cardPiles = new CardPiles();

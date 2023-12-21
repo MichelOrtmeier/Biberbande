@@ -9,7 +9,6 @@ public class CardPiles
     Stack<CardType> drawPile = new Stack<CardType>();
     Stack<CardType> discardPile = new Stack<CardType>();
 
-
     public CardPiles()
     {
         InitDrawPile();

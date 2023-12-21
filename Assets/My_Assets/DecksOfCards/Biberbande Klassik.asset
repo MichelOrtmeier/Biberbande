@@ -31,7 +31,6 @@ MonoBehaviour:
     visualisation: {fileID: 615757283, guid: 3138de0ccdaa3ef47abf8926677524db, type: 3}
   - cardType: 8
     visualisation: {fileID: 1437909271, guid: 3138de0ccdaa3ef47abf8926677524db, type: 3}
-  - cardType: 10
-    visualisation: {fileID: -1953352220, guid: 0aeb0ce0c92b5834391a0b9631dd68d1, type: 3}
   - cardType: 9
     visualisation: {fileID: 1212185710, guid: 3138de0ccdaa3ef47abf8926677524db, type: 3}
+  cardBack: {fileID: -1953352220, guid: 0aeb0ce0c92b5834391a0b9631dd68d1, type: 3}

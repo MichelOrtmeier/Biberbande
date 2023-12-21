@@ -4,7 +4,7 @@ using UnityEngine;
 using Unity;
 using UnityEngine.UI;
 
-public class CardPanel : MonoBehaviour
+public class GameScreen : MonoBehaviour
 {
     [SerializeField] CardVisualisation[] cardsVisualisation = new CardVisualisation[4];
     [SerializeField] CardVisualisation discardPileVisualisation;
