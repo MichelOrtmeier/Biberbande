@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class OpenCardVisualisation : CardVisualisation
 {
-    protected override void Start()
+    protected override void InitShowCardSide()
     {
         isShowingBack = false;
         ShowValue();

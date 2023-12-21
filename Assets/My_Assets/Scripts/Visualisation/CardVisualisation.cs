@@ -8,6 +8,7 @@ using UnityEngine;
 using UnityEngine.UI;
 
 [RequireComponent(typeof(UnityEngine.UI.Image))]
+[RequireComponent(typeof(UnityEngine.UI.Button))]
 public class CardVisualisation : MonoBehaviour
 {
     public CardType Value
@@ -22,19 +23,29 @@ public class CardVisualisation : MonoBehaviour
             }
         }
     }
-
-    [SerializeField] protected DeckOfCardsVisualisationSO cardAppearance;
-
-    protected CardType value;
-    protected UnityEngine.UI.Image visualisation;
     protected bool isShowingBack;
+
+    [SerializeField] private DeckOfCardsVisualisationSO cardAppearance;
+    [SerializeField] private Color highlightingColor;
+
+    private UnityEngine.UI.Image visualisation;
+    private UnityEngine.UI.Button selectButton;
+    private CardType value;
+    private Color defaultColor;
 
     private void Awake()
     {
         visualisation = GetComponent<UnityEngine.UI.Image>();
     }
 
-    protected virtual void Start()
+    private void Start()
+    {
+        defaultColor = visualisation.color;
+        selectButton.enabled = true;
+        InitShowCardSide();
+    }
+
+    protected virtual void InitShowCardSide()
     {
         isShowingBack = true;
         ShowBack();
@@ -61,5 +72,25 @@ public class CardVisualisation : MonoBehaviour
     protected void ShowBack()
     {
         visualisation.sprite = cardAppearance.CardBack;
+    }
+
+    public void Highlight()
+    {
+        visualisation.color = highlightingColor;
+    }
+
+    public void StopHighlight()
+    {
+        visualisation.color = defaultColor;
+    }
+
+    public void DisableButton()
+    {
+        selectButton.enabled = false;
+    }
+
+    public void EnableButton()
+    {
+        selectButton.enabled = true;
     }
 }
