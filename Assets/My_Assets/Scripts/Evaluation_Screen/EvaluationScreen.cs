@@ -52,6 +52,7 @@ public class EvaluationScreen : MonoBehaviour
 
     public void OnGoToHomeMenuButtonClick()
     {
+        Destroy(FindObjectOfType<DeckOfCards>());
         SceneManager.LoadScene(0);
     }
 }

@@ -1498,10 +1498,10 @@ MonoBehaviour:
   playerNames:
   - Biber
   - Ratte
-  - Baum
+  - Huhn
   - Fuchs
   - Schaf
-  - "M\xF6hre"
+  - Wolf
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0

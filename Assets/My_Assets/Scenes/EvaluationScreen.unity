@@ -520,7 +520,7 @@ GameObject:
   - component: {fileID: 4835080480111139763}
   - component: {fileID: 7688126481942352236}
   m_Layer: 5
-  m_Name: Evaluation_Canvas
+  m_Name: Evaluation_Screen
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -665,18 +665,18 @@ PrefabInstance:
     - target: {fileID: 5693396741520159095, guid: f3c9a0ff1cf99c04bb52214c6b228e13, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
-      objectReference: {fileID: 0}
+      objectReference: {fileID: 7688126481942352236}
     - target: {fileID: 5693396741520159095, guid: f3c9a0ff1cf99c04bb52214c6b228e13, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_CallState
       value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 5693396741520159095, guid: f3c9a0ff1cf99c04bb52214c6b228e13, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
-      value: OnStartButtonClick
+      value: OnGoToHomeMenuButtonClick
       objectReference: {fileID: 0}
     - target: {fileID: 5693396741520159095, guid: f3c9a0ff1cf99c04bb52214c6b228e13, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
-      value: StartScreen, Assembly-CSharp
+      value: EvaluationScreen, Assembly-CSharp
       objectReference: {fileID: 0}
     - target: {fileID: 5693396741520159095, guid: f3c9a0ff1cf99c04bb52214c6b228e13, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
