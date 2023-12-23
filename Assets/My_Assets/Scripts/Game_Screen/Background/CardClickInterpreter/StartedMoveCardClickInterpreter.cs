@@ -13,14 +13,12 @@ public class StartedMoveCardClickInterpreter : CardClickInterpreter
 
     public override void OnDiscardPileClick()
     {
-        deckOfCards.MoveOnToNextPlayer();
         gameScreen.ShowInitialDiscardPileSelection();
         interpreterFactory.InstantiateNext(StateDuringPlayerMove.SelectedDiscardPile);
     }
 
     public override void OnDrawPileClick()
     {
-        deckOfCards.MoveOnToNextPlayer();
         if (deckOfCards.PeekFromDrawPile() == Card.magnifier)
         {
             gameScreen.ShowReceivedMagnifier();

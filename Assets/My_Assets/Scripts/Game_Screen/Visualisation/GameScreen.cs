@@ -22,13 +22,11 @@ public class GameScreen : MonoBehaviour
     [SerializeField] float secondsToShowCompletedSwapTransaction = 3f;
 
     DeckOfCards deckOfCards;
-    //StateDuringPlayerMove stateDuringPlayerMove = StateDuringPlayerMove.StartedMove;
     #endregion
 
     private void Start()
     {
         deckOfCards = FindObjectOfType<DeckOfCards>();
-        deckOfCards.InitPlayers(new string[] { "Danika", "Jörg", "Michel" });
         ResetVisualisationToMoveStart();
     }
 
@@ -125,11 +123,12 @@ public class GameScreen : MonoBehaviour
         ModifyAllPileVisualisations((pile) => pile.EnableButton());
         drawPileVisualisation.StopHighlight();
         drawPileVisualisation.ShowBack();
-        UpdateCardVisualisationValues();
+        ResetVisualisationToMoveStart();
     }
 
     private void ResetVisualisationToMoveStart()
     {
+        deckOfCards.MoveOnToNextPlayer();
         UpdateCardVisualisationValues();
         ModifyAllPileVisualisations((pile) => pile.EnableButton());
         ModifyAllPlayerHandVisualisations((card) => card.DisableButton());
