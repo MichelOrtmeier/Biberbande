@@ -21,7 +21,15 @@ public class StartedMoveCardClickInterpreter : CardClickInterpreter
     public override void OnDrawPileClick()
     {
         deckOfCards.MoveOnToNextPlayer();
-        gameScreen.ShowInitialDrawPileSelection();
-        interpreterFactory.InstantiateNext(StateDuringPlayerMove.SelectedDrawPile);
+        if (deckOfCards.PeekFromDrawPile() == Card.magnifier)
+        {
+            gameScreen.ShowReceivedMagnifier();
+            interpreterFactory.InstantiateNext(StateDuringPlayerMove.ReceivedMagnifier);
+        }
+        else
+        {
+            gameScreen.ShowInitialDrawPileSelection();
+            interpreterFactory.InstantiateNext(StateDuringPlayerMove.SelectedDrawPile);
+        }
     }
 }

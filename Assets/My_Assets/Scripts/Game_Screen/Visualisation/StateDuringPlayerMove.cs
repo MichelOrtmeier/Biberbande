@@ -9,4 +9,5 @@ public enum StateDuringPlayerMove//describes the state(, which is currently reac
     StartedMove = 0,
     SelectedDrawPile = 1,
     SelectedDiscardPile = 2,
+    ReceivedMagnifier = 3,
 }

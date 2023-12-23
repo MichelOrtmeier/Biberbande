@@ -43,6 +43,18 @@ public class CardVisualisation : MonoBehaviour
         selectButton = GetComponent<UnityEngine.UI.Button>();
     }
 
+    public void Flip()
+    {
+        if (isShowingBack)
+        {
+            ShowValue();
+        }
+        else
+        {
+            ShowBack();
+        }
+    }
+
     public void ShowValue()
     {
         isShowingBack = false;

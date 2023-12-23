@@ -40,13 +40,17 @@ public class CardPiles
     private static int GetAmountInCardDeck(Card card)
     {
         int amount;
-        if (card != Card.nine)
+        if (card == Card.nine)
         {
-            amount = 4;
+            amount = 9;
+        }
+        else if(card == Card.magnifier)
+        {
+            amount = 12;
         }
         else
         {
-            amount = 9;
+            amount = 4;
         }
         return amount;
     }

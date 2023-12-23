@@ -106,6 +106,28 @@ public class GameScreen : MonoBehaviour
         ResetVisualisationToMoveStart();
     }
 
+    public void ShowReceivedMagnifier()
+    {
+        drawPileVisualisation.ShowValue();
+        drawPileVisualisation.Highlight();
+        ModifyAllPileVisualisations(pile => pile.DisableButton());
+        ModifyAllPlayerHandVisualisations(card => card.EnableButton());
+    }
+
+    public void ShowUseMagnifierFor(int card)
+    {
+        playerHandCardVisualisations[card].ShowValue();
+    }
+
+    public void ShowUsedMagnifier()
+    {
+        ModifyAllPlayerHandVisualisations((card) => { card.ShowBack(); card.DisableButton(); });
+        ModifyAllPileVisualisations((pile) => pile.EnableButton());
+        drawPileVisualisation.StopHighlight();
+        drawPileVisualisation.ShowBack();
+        UpdateCardVisualisationValues();
+    }
+
     private void ResetVisualisationToMoveStart()
     {
         UpdateCardVisualisationValues();

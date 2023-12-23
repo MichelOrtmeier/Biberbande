@@ -16,4 +16,5 @@ public enum Card
     seven = 7,
     eight = 8,
     nine = 9,
+    magnifier = 10,
 }
