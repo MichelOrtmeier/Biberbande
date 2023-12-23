@@ -22,42 +22,61 @@ public class GameScreen : MonoBehaviour
     [SerializeField] float secondsToShowCompletedSwapTransaction = 3f;
 
     DeckOfCards deckOfCards;
-    StateDuringPlayerMove stateDuringPlayerMove = StateDuringPlayerMove.StartedMove;
+    //StateDuringPlayerMove stateDuringPlayerMove = StateDuringPlayerMove.StartedMove;
     #endregion
 
     private void Start()
     {
-        deckOfCards = new DeckOfCards(new string[]
-        {
-            "Jörg",
-            "Danika",
-            "Michel",
-        });
+        deckOfCards = FindObjectOfType<DeckOfCards>();
+        deckOfCards.InitPlayers(new string[] { "Danika", "Jörg", "Michel" });
         ResetVisualisationToMoveStart();
     }
 
     public void OnCardClick(int card)
     {
-        CardVisualisation playerHandCardVisualisation = playerHandCardVisualisations[card];
-        CardVisualisation pileToSwapWithVisualisation;
-        if(stateDuringPlayerMove == StateDuringPlayerMove.SelectedDrawPile)
-        {
-            deckOfCards.SwapDrawPileTopForCard(card);
-            pileToSwapWithVisualisation = drawPileVisualisation;
-        }
-        else if(stateDuringPlayerMove == StateDuringPlayerMove.SelectedDiscardPile)
-        {
-            deckOfCards.SwapDiscardTopForCard(card);
-            pileToSwapWithVisualisation = discardPileVisualisation;
-        }
-        else
-        {
-            throw new Exception("The click on a playerHandCard could not be processed.");
-        }
-        StartCoroutine(ShowSwap(playerHandCardVisualisation, pileToSwapWithVisualisation));
+        UpdateCardVisualisationValues();
+        FindObjectOfType<CardClickInterpreter>().OnCardClick(card);
     }
 
-    private IEnumerator ShowSwap(CardVisualisation playerHandCardVisualisation, CardVisualisation pileToSwapWithVisualisation)
+    public void OnDrawPileClick()
+    {
+        UpdateCardVisualisationValues();
+        FindObjectOfType<CardClickInterpreter>().OnDrawPileClick();
+    }
+
+    public void OnDiscardPileClick()
+    {
+        UpdateCardVisualisationValues();
+        FindObjectOfType<CardClickInterpreter>().OnDiscardPileClick();
+    }
+
+    public void ShowInitialDiscardPileSelection()
+    {
+        discardPileVisualisation.Highlight();
+        ModifyAllPileVisualisations((card) => card.DisableButton());
+        ModifyAllPlayerHandVisualisations((card) => card.EnableButton());
+    }
+
+    public void ShowInitialDrawPileSelection()
+    {
+        drawPileVisualisation.ShowValue();
+        drawPileVisualisation.Highlight();
+        drawPileVisualisation.DisableButton();
+        discardPileVisualisation.EnableButton();
+        ModifyAllPlayerHandVisualisations((card) => card.EnableButton());
+    }
+
+    public void ShowSwapDiscardPileTopForCard(int card)
+    {
+        StartCoroutine(StartShowSwapPileTopForPlayerHand(playerHandCardVisualisations[card], discardPileVisualisation));
+    }
+
+    public void ShowSwapDrawPileTopForCard(int card)
+    {
+        StartCoroutine(StartShowSwapPileTopForPlayerHand(playerHandCardVisualisations[card], drawPileVisualisation));
+    }
+
+    private IEnumerator StartShowSwapPileTopForPlayerHand(CardVisualisation playerHandCardVisualisation, CardVisualisation pileToSwapWithVisualisation)
     {
         ModifyAllCardVisualisations((card) => card.DisableButton());
         playerHandCardVisualisation.ShowValue();
@@ -70,72 +89,20 @@ public class GameScreen : MonoBehaviour
         UpdateCardVisualisationValues();
         yield return new WaitForSeconds(secondsToShowCompletedSwapTransaction);
         playerHandCardVisualisation.ShowBack();
-        OnMoveFinished();
+        ResetVisualisationToMoveStart();
     }
 
-    #region DiscardPile
-    public void OnDiscardPileClick()
+    public void ShowSwapDrawPileTopForDiscardPileTop()
     {
-        if(stateDuringPlayerMove == StateDuringPlayerMove.StartedMove)
-        {
-            OnInitialDiscardPileSelection();
-        }
-        else if(stateDuringPlayerMove == StateDuringPlayerMove.SelectedDrawPile)
-        {
-            OnDiscardDrawPileTop();
-        }
-    }
-    private void OnInitialDiscardPileSelection()
-    {
-        stateDuringPlayerMove = StateDuringPlayerMove.SelectedDiscardPile;
-        discardPileVisualisation.Highlight();
-        ModifyAllPileVisualisations((card) => card.DisableButton());
-        ModifyAllPlayerHandVisualisations((card) => card.EnableButton());
+        StartCoroutine(StartShowSwapDrawPileTopForDiscardPileTop());
     }
 
-    private void OnDiscardDrawPileTop()
-    {
-        deckOfCards.DiscardDrawPileTop();
-        StartCoroutine(ShowDiscardDrawPileTop());
-    }
-
-    private IEnumerator ShowDiscardDrawPileTop()
+    private IEnumerator StartShowSwapDrawPileTopForDiscardPileTop()
     {
         drawPileVisualisation.Highlight();
         discardPileVisualisation.Highlight();
         yield return new WaitForSecondsRealtime(secondsToShowCompletedSwapTransaction);
         drawPileVisualisation.ShowBack();
-        OnMoveFinished();
-    }
-
-    #endregion
-
-    #region DrawPile
-    public void OnDrawPileClick()
-    {
-        if(stateDuringPlayerMove == StateDuringPlayerMove.StartedMove)
-        {
-            OnInitialDrawPileSelection();
-        }
-    }
-
-    private void OnInitialDrawPileSelection()
-    {
-        stateDuringPlayerMove = StateDuringPlayerMove.SelectedDrawPile;
-        drawPileVisualisation.ShowValue();
-        drawPileVisualisation.Highlight();
-        drawPileVisualisation.DisableButton();
-        discardPileVisualisation.EnableButton();
-        ModifyAllPlayerHandVisualisations((card) => card.EnableButton());
-    }
-    #endregion DrawPile
-
-
-    #region general
-    private void OnMoveFinished()
-    {
-        deckOfCards.MoveOnToNextPlayer();
-        stateDuringPlayerMove = StateDuringPlayerMove.StartedMove;
         ResetVisualisationToMoveStart();
     }
 
@@ -177,5 +144,4 @@ public class GameScreen : MonoBehaviour
         cardModifier(drawPileVisualisation);
         cardModifier(discardPileVisualisation);
     }
-    #endregion
 }
