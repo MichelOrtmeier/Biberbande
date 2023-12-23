@@ -6,24 +6,25 @@ using System.Threading.Tasks;
 
 public class CardPiles
 {
-    Stack<CardType> drawPile = new Stack<CardType>();
-    Stack<CardType> discardPile = new Stack<CardType>();
+    Stack<Card> drawPile = new Stack<Card>();
+    Stack<Card> discardPile = new Stack<Card>();
 
     public CardPiles()
     {
         InitDrawPile();
+        PushToDiscard(PopFromDraw());
     }
 
     private void InitDrawPile()
     {
-        foreach (CardType type in GetCardTypes())
+        foreach (Card type in GetCardTypes())
         {
             AddCardsToDraw(type);
         }
-        drawPile = new Stack<CardType>(drawPile.Shuffle());
+        drawPile = new Stack<Card>(drawPile.Shuffle());
     }
 
-    private void AddCardsToDraw(CardType type)
+    private void AddCardsToDraw(Card type)
     {
         for (int i = 0; i < GetAmountInCardDeck(type); i++)
         {
@@ -33,13 +34,13 @@ public class CardPiles
 
     private static IEnumerable<int> GetCardTypes()
     {
-        return Enumerable.Range(0, Enum.GetValues(typeof(CardType)).Length - 1);
+        return Enumerable.Range(0, Enum.GetValues(typeof(Card)).Length - 1);
     }
 
-    private static int GetAmountInCardDeck(CardType card)
+    private static int GetAmountInCardDeck(Card card)
     {
         int amount;
-        if (card != CardType.nine)
+        if (card != Card.nine)
         {
             amount = 4;
         }
@@ -50,7 +51,7 @@ public class CardPiles
         return amount;
     }
 
-    public CardType PopFromDraw()
+    public Card PopFromDraw()
     {
         RefillDrawPile();
         return drawPile.Pop();
@@ -60,36 +61,36 @@ public class CardPiles
     {
         if (drawPile.Count == 0)
         {
-        CardType discardTop = PopFromDiscard();
-        drawPile = new Stack<CardType>(drawPile.Concat(discardPile));
-        drawPile = new Stack<CardType>(drawPile.Shuffle());
+        Card discardTop = PopFromDiscard();
+        drawPile = new Stack<Card>(drawPile.Concat(discardPile));
+        drawPile = new Stack<Card>(drawPile.Shuffle());
         discardPile.Clear();
         discardPile.Push(discardTop);
         }
     }
 
-    public CardType PeekFromDraw()
+    public Card PeekFromDraw()
     {
         RefillDrawPile();
         return drawPile.Peek();
     }
 
-    public CardType PopFromDiscard()
+    public Card PopFromDiscard()
     {
         return discardPile.Pop();
     }
 
-    public CardType PeekFromDiscard()
+    public Card PeekFromDiscard()
     {
         return discardPile.Peek();
     }
 
-    public void PushToDiscard(CardType card)
+    public void PushToDiscard(Card card)
     {
         discardPile.Push(card);
     }
 
-    public void SwapDrawPileTopForDiscardPileTop()
+    public void DiscardDrawPileTop()
     {
         PushToDiscard(PopFromDraw());
     }

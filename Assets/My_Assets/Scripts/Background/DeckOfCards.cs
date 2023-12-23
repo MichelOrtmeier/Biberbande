@@ -55,22 +55,26 @@ public class DeckOfCards
 
     public void SwapDiscardTopForCard(int cardIndex)
     {
-        CardType discard = cardPiles.PopFromDiscard();
+        Card discard = cardPiles.PopFromDiscard();
         cardPiles.PushToDiscard(players[playerIndex].GetCard(cardIndex));
         players[playerIndex].SetCard(discard, cardIndex);
     }
 
     public void SwapDrawPileTopForCard(int cardIndex)
     {
-        CardType draw = cardPiles.PopFromDraw();
+        Card draw = cardPiles.PopFromDraw();
         cardPiles.PushToDiscard(players[playerIndex].GetCard(cardIndex));
         players[playerIndex].SetCard(draw, cardIndex);
     }
 
+    public void DiscardDrawPileTop() => cardPiles.DiscardDrawPileTop();
+
     //Getter/Setter
-    public CardType PeekFromDrawPile() => cardPiles.PeekFromDraw();
+    public Card PeekFromDrawPile() => cardPiles.PeekFromDraw();
 
-    public CardType PeekFromDiscardPile() => cardPiles.PeekFromDiscard();
+    public Card PeekFromDiscardPile() => cardPiles.PeekFromDiscard();
 
-    public CardType GetCard(int cardIndex) => players[playerIndex].GetCard(cardIndex);
+    public Card GetCard(int cardIndex) => players[playerIndex].GetCard(cardIndex);
+
+    public string GetPlayerName() => players[playerIndex].Name;
 }

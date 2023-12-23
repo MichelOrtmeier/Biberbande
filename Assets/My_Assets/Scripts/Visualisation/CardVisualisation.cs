@@ -11,66 +11,47 @@ using UnityEngine.UI;
 [RequireComponent(typeof(UnityEngine.UI.Button))]
 public class CardVisualisation : MonoBehaviour
 {
-    public CardType Value
+    public Card Value
     {
         get => value;
         set
         {
             this.value = value;
-            if (!isShowingBack)
+            if (isShowingBack)
+            {
+                ShowBack();
+            }
+            else
             {
                 ShowValue();
             }
         }
     }
-    protected bool isShowingBack;
+    private bool isShowingBack = true;
 
     [SerializeField] private DeckOfCardsVisualisationSO cardAppearance;
     [SerializeField] private Color highlightingColor;
+    [SerializeField] private Color defaultColor = Color.white;
 
     private UnityEngine.UI.Image visualisation;
     private UnityEngine.UI.Button selectButton;
-    private CardType value;
-    private Color defaultColor;
+    private Card value;
 
     private void Awake()
     {
         visualisation = GetComponent<UnityEngine.UI.Image>();
+        selectButton = GetComponent<UnityEngine.UI.Button>();
     }
 
-    private void Start()
+    public void ShowValue()
     {
-        defaultColor = visualisation.color;
-        selectButton.enabled = true;
-        InitShowCardSide();
-    }
-
-    protected virtual void InitShowCardSide()
-    {
-        isShowingBack = true;
-        ShowBack();
-    }
-
-    public virtual void Flip()
-    {
-        if (isShowingBack)
-        {
-            ShowValue();
-        }
-        else
-        {
-            ShowBack();
-        }
-        isShowingBack = !isShowingBack;
-    }
-
-    protected void ShowValue()
-    {
+        isShowingBack = false;
         visualisation.sprite = cardAppearance.GetCardVisualisation(Value);
     }
 
-    protected void ShowBack()
+    public virtual void ShowBack()
     {
+        isShowingBack = true;
         visualisation.sprite = cardAppearance.CardBack;
     }
 
@@ -86,11 +67,11 @@ public class CardVisualisation : MonoBehaviour
 
     public void DisableButton()
     {
-        selectButton.enabled = false;
+        selectButton.interactable = false;
     }
 
     public void EnableButton()
     {
-        selectButton.enabled = true;
+        selectButton.interactable = true;
     }
 }

@@ -17,11 +17,11 @@ public class DeckOfCardsVisualisationSO : ScriptableObject
     [Serializable]
     class CardVisualisationInput
     {
-        public CardType cardType;
+        public Card cardType;
         public Sprite visualisation;
     }
 
-    Dictionary<CardType, Sprite> cardVisualisationsLookup = new();
+    Dictionary<Card, Sprite> cardVisualisationsLookup = new();
 
     private void OnEnable()
     {
@@ -35,7 +35,7 @@ public class DeckOfCardsVisualisationSO : ScriptableObject
         }
     }
 
-    public Sprite GetCardVisualisation(CardType card)
+    public Sprite GetCardVisualisation(Card card)
     {
         if (cardVisualisationsLookup.ContainsKey(card))
         {

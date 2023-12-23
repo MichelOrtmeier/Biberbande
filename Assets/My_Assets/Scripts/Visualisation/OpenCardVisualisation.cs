@@ -1,17 +1,13 @@
-using System.Collections;
+﻿using System;
 using System.Collections.Generic;
-using UnityEngine;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
 
 public class OpenCardVisualisation : CardVisualisation
 {
-    protected override void InitShowCardSide()
+    public override void ShowBack()
     {
-        isShowingBack = false;
-        ShowValue();
-    }
-
-    public override void Flip()
-    {
-        ShowValue();
+        base.ShowValue();
     }
 }

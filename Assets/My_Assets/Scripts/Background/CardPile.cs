@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-public enum CardType
+public enum Card
 {
     zero = 0,
     one = 1,
