@@ -34,7 +34,7 @@ public class CardPiles
 
     private static IEnumerable<int> GetCardTypes()
     {
-        return Enumerable.Range(0, Enum.GetValues(typeof(Card)).Length - 1);
+        return Enumerable.Range(0, Enum.GetValues(typeof(Card)).Length);
     }
 
     private static int GetAmountInCardDeck(Card card)
