@@ -61,11 +61,11 @@ public class CardPiles
     {
         if (drawPile.Count == 0)
         {
-        Card discardTop = PopFromDiscard();
-        drawPile = new Stack<Card>(drawPile.Concat(discardPile));
-        drawPile = new Stack<Card>(drawPile.Shuffle());
-        discardPile.Clear();
-        discardPile.Push(discardTop);
+            Card discardTop = PopFromDiscard();
+            drawPile = new Stack<Card>(drawPile.Concat(discardPile));
+            drawPile = new Stack<Card>(drawPile.Shuffle());
+            discardPile.Clear();
+            discardPile.Push(discardTop);
         }
     }
 

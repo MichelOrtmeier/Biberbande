@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
+//mehr Methoden, stärkere Eigenständigkeit?
 public class Player
 {
     public string Name { get; private set; }

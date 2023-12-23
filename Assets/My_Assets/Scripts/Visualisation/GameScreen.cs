@@ -22,7 +22,7 @@ public class GameScreen : MonoBehaviour
     [SerializeField] float secondsToShowCompletedSwapTransaction = 3f;
 
     DeckOfCards deckOfCards;
-    CardPile pileToSwapWith = CardPile.None;
+    StateDuringPlayerMove stateDuringPlayerMove = StateDuringPlayerMove.StartedMove;
     #endregion
 
     private void Start()
@@ -40,12 +40,12 @@ public class GameScreen : MonoBehaviour
     {
         CardVisualisation playerHandCardVisualisation = playerHandCardVisualisations[card];
         CardVisualisation pileToSwapWithVisualisation;
-        if(pileToSwapWith == CardPile.DrawPile)
+        if(stateDuringPlayerMove == StateDuringPlayerMove.SelectedDrawPile)
         {
             deckOfCards.SwapDrawPileTopForCard(card);
             pileToSwapWithVisualisation = drawPileVisualisation;
         }
-        else if(pileToSwapWith == CardPile.DiscardPile)
+        else if(stateDuringPlayerMove == StateDuringPlayerMove.SelectedDiscardPile)
         {
             deckOfCards.SwapDiscardTopForCard(card);
             pileToSwapWithVisualisation = discardPileVisualisation;
@@ -76,18 +76,18 @@ public class GameScreen : MonoBehaviour
     #region DiscardPile
     public void OnDiscardPileClick()
     {
-        if(pileToSwapWith == CardPile.None)
+        if(stateDuringPlayerMove == StateDuringPlayerMove.StartedMove)
         {
             OnInitialDiscardPileSelection();
         }
-        else if(pileToSwapWith == CardPile.DrawPile)
+        else if(stateDuringPlayerMove == StateDuringPlayerMove.SelectedDrawPile)
         {
             OnDiscardDrawPileTop();
         }
     }
     private void OnInitialDiscardPileSelection()
     {
-        pileToSwapWith = CardPile.DiscardPile;
+        stateDuringPlayerMove = StateDuringPlayerMove.SelectedDiscardPile;
         discardPileVisualisation.Highlight();
         ModifyAllPileVisualisations((card) => card.DisableButton());
         ModifyAllPlayerHandVisualisations((card) => card.EnableButton());
@@ -113,7 +113,7 @@ public class GameScreen : MonoBehaviour
     #region DrawPile
     public void OnDrawPileClick()
     {
-        if(pileToSwapWith == CardPile.None)
+        if(stateDuringPlayerMove == StateDuringPlayerMove.StartedMove)
         {
             OnInitialDrawPileSelection();
         }
@@ -121,7 +121,7 @@ public class GameScreen : MonoBehaviour
 
     private void OnInitialDrawPileSelection()
     {
-        pileToSwapWith = CardPile.DrawPile;
+        stateDuringPlayerMove = StateDuringPlayerMove.SelectedDrawPile;
         drawPileVisualisation.ShowValue();
         drawPileVisualisation.Highlight();
         drawPileVisualisation.DisableButton();
@@ -135,7 +135,7 @@ public class GameScreen : MonoBehaviour
     private void OnMoveFinished()
     {
         deckOfCards.MoveOnToNextPlayer();
-        pileToSwapWith = CardPile.None;
+        stateDuringPlayerMove = StateDuringPlayerMove.StartedMove;
         ResetVisualisationToMoveStart();
     }
 

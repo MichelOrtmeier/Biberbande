@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
+//es wäre besser, die playerIndex gameloop in einer anderen Klasse unterzubringen oder zu vererben
 public class DeckOfCards
 {
     //variables
