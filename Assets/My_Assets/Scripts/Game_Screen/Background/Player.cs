@@ -35,4 +35,14 @@ public class Player
 
         hand[index] = card;
     }
+
+    public int GetScore()
+    {
+        int score = 0;
+        foreach(Card card in hand)
+        {
+            score += (int)card;
+        }
+        return score;
+    }
 }

@@ -9,6 +9,8 @@ using UnityEngine;
 //Swap Methoden erzeugen switch -> in Polymorphismus umwandeln
 public class DeckOfCards : MonoBehaviour
 {
+    public Player[] Players { get => players; }
+
     //variables
     private CardPiles cardPiles = new CardPiles();
     private Player[] players;
