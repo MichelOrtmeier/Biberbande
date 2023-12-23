@@ -11,6 +11,9 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/My_Assets/Scenes/GameScreen.unity
     guid: 3fc8acdd13e6c734bafef6554d6fdbcd
+  - enabled: 1
+    path: Assets/My_Assets/Scenes/EvaluationScreen.unity
+    guid: f6cbc35f451bded4f942af23cbdd9419
   m_configObjects:
     com.unity.adaptiveperformance.loader_settings: {fileID: 11400000, guid: 1ee9c23e29f56ef48a2db98b3316d4da, type: 2}
     com.unity.adaptiveperformance.simulator.provider_settings: {fileID: 11400000, guid: 0b94e5ccf02d6574a99c218208501a26, type: 2}

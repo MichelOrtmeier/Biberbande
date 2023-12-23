@@ -6,6 +6,7 @@ using UnityEngine.UI;
 using System.Data;
 using System;
 using TMPro;
+using UnityEngine.SceneManagement;
 
 public delegate void CardModifier(CardVisualisation card);
 
@@ -46,6 +47,11 @@ public class GameScreen : MonoBehaviour
     {
         UpdateCardVisualisationValues();
         FindObjectOfType<CardClickInterpreter>().OnDiscardPileClick();
+    }
+
+    public void OnMoveOnToNextSceneButtonClick()
+    {
+        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex+1);
     }
 
     public void ShowInitialDiscardPileSelection()

@@ -254,6 +254,14 @@ PrefabInstance:
       propertyPath: m_CellSize.y
       value: 75
       objectReference: {fileID: 0}
+    - target: {fileID: 1120036007534175646, guid: 83bc948c9b88dc94c9fdf5ff859ded0e, type: 3}
+      propertyPath: m_Interactable
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1120036007534175646, guid: 83bc948c9b88dc94c9fdf5ff859ded0e, type: 3}
+      propertyPath: m_Colors.m_DisabledColor.a
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 1601246119086531556, guid: 83bc948c9b88dc94c9fdf5ff859ded0e, type: 3}
       propertyPath: m_AnchorMax.y
       value: 0
@@ -326,6 +334,14 @@ PrefabInstance:
       propertyPath: m_AnchoredPosition.y
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 5239811965727873052, guid: 83bc948c9b88dc94c9fdf5ff859ded0e, type: 3}
+      propertyPath: m_Interactable
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5239811965727873052, guid: 83bc948c9b88dc94c9fdf5ff859ded0e, type: 3}
+      propertyPath: m_Colors.m_DisabledColor.a
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 5787022810970349396, guid: 83bc948c9b88dc94c9fdf5ff859ded0e, type: 3}
       propertyPath: m_AnchorMax.y
       value: 0
@@ -349,6 +365,14 @@ PrefabInstance:
     - target: {fileID: 5787022810970349396, guid: 83bc948c9b88dc94c9fdf5ff859ded0e, type: 3}
       propertyPath: m_AnchoredPosition.y
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5817217273525627192, guid: 83bc948c9b88dc94c9fdf5ff859ded0e, type: 3}
+      propertyPath: m_Interactable
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5817217273525627192, guid: 83bc948c9b88dc94c9fdf5ff859ded0e, type: 3}
+      propertyPath: m_Colors.m_DisabledColor.a
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 6060034618281421867, guid: 83bc948c9b88dc94c9fdf5ff859ded0e, type: 3}
       propertyPath: m_Pivot.x
@@ -429,6 +453,14 @@ PrefabInstance:
     - target: {fileID: 6060034618281421867, guid: 83bc948c9b88dc94c9fdf5ff859ded0e, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6194314932871286893, guid: 83bc948c9b88dc94c9fdf5ff859ded0e, type: 3}
+      propertyPath: m_Interactable
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6194314932871286893, guid: 83bc948c9b88dc94c9fdf5ff859ded0e, type: 3}
+      propertyPath: m_Colors.m_DisabledColor.a
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 8741621162823880876, guid: 83bc948c9b88dc94c9fdf5ff859ded0e, type: 3}
       propertyPath: m_Name
